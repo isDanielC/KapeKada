@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KapeKada Coffee Cart</title>
+<meta name="description" content="KapeKada Coffee Cart">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet" href="https://pyscript.net/releases/2024.11.1/core.css">
+<script type="module" src="https://pyscript.net/releases/2024.11.1/core.js"></script>
+</head>
+<body>
+
+<div id="loading-screen">
+  <div class="loading-cup">☕</div>
+  <p>Brewing the page…</p>
+</div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#home" class="brand">
+      <span class="brand-mark">☕</span>
+      <span class="brand-name">KapeKada</span>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" py-click="toggle_nav" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="nav-links" class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#menu">Menu</a>
+      <a href="#order">Order</a>
+      <a href="#rewards">Rewards</a>
+      <a href="#feedback">Feedback</a>
+      <a href="#visit">Visit Us</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">Pahina Central · Leon Kilat St. · Cebu City</p>
+      <h1>Specialty coffee, priced for everyone on the street.</h1>
+      <p class="hero-sub">KapeKada is a mobile coffee cart serving café-quality drinks at budget-friendly prices — for students, employees, vendors, residents, and anyone passing through.</p>
+      <div class="hero-actions">
+        <a href="#order" class="btn btn-primary">Build Your Order</a>
+        <a href="#menu" class="btn btn-ghost">See the Menu</a>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="cup-illustration">
+        <div class="cup-steam s1"></div>
+        <div class="cup-steam s2"></div>
+        <div class="cup-steam s3"></div>
+        <div class="cup-body">
+          <div class="cup-sleeve"></div>
+          <div class="cup-lid"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about">
+    <h2>Why KapeKada</h2>
+    <p class="section-sub">A business built on real survey data and a simple idea: good coffee shouldn't be reserved for those who can afford a sit-down café.</p>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <span class="feature-icon">🎯</span>
+        <h3>The Problem</h3>
+        <p>Nearby options are either pricey full-service cafés or low-quality instant coffee — nothing affordable and good in between.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">💡</span>
+        <h3>Our Solution</h3>
+        <p>A compact cart with a focused 6-drink specialty menu, fast service, and prices between ₱40–₱59 — informed by our own market survey.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🤝</span>
+        <h3>Who It's For</h3>
+        <p>Everyone on the corridor: students, office workers, business owners, residents, commuters, and visitors alike.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section id="menu" class="menu">
+    <h2>Our Menu</h2>
+    <p class="section-sub">Prices shown are for a 12oz Regular. Customize size and add-ons in the order builder below.</p>
+    <div class="menu-grid">
+      <article class="menu-card">
+        <span class="menu-emoji">☕</span>
+        <h3>Americano</h3>
+        <p>Bold espresso, hot water, no frills.</p>
+        <span class="menu-price">₱40</span>
+      </article>
+      <article class="menu-card">
+        <span class="menu-emoji">🫖</span>
+        <h3>Cappuccino</h3>
+        <p>Espresso, steamed milk, thick foam.</p>
+        <span class="menu-price">₱49</span>
+      </article>
+      <article class="menu-card">
+        <span class="menu-emoji">🍫</span>
+        <h3>Mocha</h3>
+        <p>Espresso, chocolate, steamed milk.</p>
+        <span class="menu-price">₱52</span>
+      </article>
+      <article class="menu-card">
+        <span class="menu-emoji">🍮</span>
+        <h3>Caramel Macchiato</h3>
+        <p>Vanilla, milk, espresso, caramel drizzle.</p>
+        <span class="menu-price">₱55</span>
+      </article>
+      <article class="menu-card">
+        <span class="menu-emoji">🧊</span>
+        <h3>Iced Spanish Latte</h3>
+        <p>Espresso, condensed milk, fresh milk, ice.</p>
+        <span class="menu-price">₱55</span>
+      </article>
+      <article class="menu-card">
+        <span class="menu-emoji">🍵</span>
+        <h3>Matcha Latte</h3>
+        <p>Premium matcha, steamed milk.</p>
+        <span class="menu-price">₱58</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- ORDER BUILDER -->
+  <section id="order" class="order">
+    <h2>Build Your Order</h2>
+    <p class="section-sub">Pick a drink, choose your size and add-ons, then add it to your order. This runs entirely in your browser with PyScript.</p>
+
+    <div class="order-layout">
+      <form id="order-form" class="order-form">
+        <label for="drink-select">Drink</label>
+        <select id="drink-select" py-change="update_preview">
+          <option value="americano" data-price="40">Americano — ₱40</option>
+          <option value="cappuccino" data-price="49">Cappuccino — ₱49</option>
+          <option value="mocha" data-price="52">Mocha — ₱52</option>
+          <option value="caramel_macchiato" data-price="55">Caramel Macchiato — ₱55</option>
+          <option value="iced_spanish_latte" data-price="55">Iced Spanish Latte — ₱55</option>
+          <option value="matcha_latte" data-price="58">Matcha Latte — ₱58</option>
+        </select>
+
+        <fieldset>
+          <legend>Size</legend>
+          <label class="radio-row">
+            <input type="radio" name="size" value="regular" checked py-change="update_preview">
+            Regular (12oz) <span class="muted">+₱0</span>
+          </label>
+          <label class="radio-row">
+            <input type="radio" name="size" value="large" py-change="update_preview">
+            Large (16oz) <span class="muted">+₱10</span>
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Add-ons</legend>
+          <label class="check-row">
+            <input type="checkbox" id="addon-shot" py-change="update_preview"> Extra Shot <span class="muted">+₱15</span>
+          </label>
+          <label class="check-row">
+            <input type="checkbox" id="addon-syrup" py-change="update_preview"> Flavor Syrup <span class="muted">+₱10</span>
+          </label>
+          <label class="check-row">
+            <input type="checkbox" id="addon-oat" py-change="update_preview"> Oat Milk <span class="muted">+₱15</span>
+          </label>
+          <label class="check-row">
+            <input type="checkbox" id="addon-cream" py-change="update_preview"> Whipped Cream <span class="muted">+₱10</span>
+          </label>
+        </fieldset>
+
+        <label for="qty-input">Quantity</label>
+        <input type="number" id="qty-input" min="1" max="20" value="1" py-input="update_preview">
+
+        <div class="preview-row">
+          <span>Line price:</span>
+          <strong id="preview-price">₱40.00</strong>
+        </div>
+
+        <button type="button" id="add-to-order-btn" class="btn btn-primary" py-click="add_to_order">Add to Order</button>
+      </form>
+
+      <div class="order-summary">
+        <h3>Your Order</h3>
+        <table class="order-table">
+          <thead>
+            <tr><th>Item</th><th>Qty</th><th>Price</th><th></th></tr>
+          </thead>
+          <tbody id="order-table-body">
+            <tr id="empty-row"><td colspan="4" class="empty-msg">No items yet — add a drink to get started.</td></tr>
+          </tbody>
+        </table>
+        <div class="grand-total-row">
+          <span>Grand Total</span>
+          <strong id="grand-total">₱0.00</strong>
+        </div>
+        <button type="button" id="place-order-btn" class="btn btn-gold" py-click="place_order">Place Order</button>
+        <div id="order-confirmation" class="order-confirmation hidden"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOYALTY REWARDS -->
+  <section id="rewards" class="rewards">
+    <h2>Loyalty Rewards Calculator</h2>
+    <p class="section-sub">KapeKada runs a simple rewards program: buy 9 cups, get the 10th free. Enter how many cups you've bought this month to see where you stand.</p>
+    <div class="rewards-box">
+      <label for="loyalty-input">Cups purchased this month</label>
+      <input type="number" id="loyalty-input" min="0" value="0">
+      <button type="button" id="loyalty-btn" class="btn btn-primary" py-click="calc_loyalty">Calculate</button>
+      <p id="loyalty-result" class="loyalty-result"></p>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback" class="feedback">
+    <h2>Customer Feedback</h2>
+    <p class="section-sub">Tell us what you think — your feedback helps KapeKada improve the menu and service.</p>
+
+    <div class="feedback-layout">
+      <form id="feedback-form" class="feedback-form" py-submit="handle_feedback_submit">
+        <label for="feedback-name">Name</label>
+        <input type="text" id="feedback-name" placeholder="Your name" required>
+
+        <label for="feedback-rating">Rating</label>
+        <select id="feedback-rating">
+          <option value="5">★★★★★ Excellent</option>
+          <option value="4">★★★★☆ Good</option>
+          <option value="3">★★★☆☆ Okay</option>
+          <option value="2">★★☆☆☆ Not great</option>
+          <option value="1">★☆☆☆☆ Poor</option>
+        </select>
+
+        <label for="feedback-message">Message</label>
+        <textarea id="feedback-message" maxlength="200" rows="4" placeholder="Share your experience..." py-input="update_char_count" required></textarea>
+        <span id="char-count" class="char-count">0 / 200 characters</span>
+
+        <button type="submit" class="btn btn-primary">Submit Feedback</button>
+      </form>
+
+      <div id="feedback-list" class="feedback-list">
+        <!-- seed feedback cards; JS/py will prepend new ones here -->
+        <div class="feedback-card">
+          <div class="feedback-card-head">
+            <strong>Mel R.</strong>
+            <span class="stars">★★★★★</span>
+          </div>
+          <p>Super affordable and the Iced Spanish Latte tastes just as good as the pricier cafés!</p>
+          <span class="feedback-date">Sep 28, 2026</span>
+        </div>
+        <div class="feedback-card">
+          <div class="feedback-card-head">
+            <strong>Jonas T.</strong>
+            <span class="stars">★★★★☆</span>
+          </div>
+          <p>Line moves fast even during rush hour. Would love an oat milk option — already added!</p>
+          <span class="feedback-date">Sep 30, 2026</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT US -->
+  <section id="visit" class="visit">
+    <h2>Visit Us</h2>
+    <div class="visit-grid">
+      <div class="visit-card">
+        <h3>📍 Location</h3>
+        <p>Leon Kilat St., Pahina Central,<br>Cebu City, Philippines</p>
+      </div>
+      <div class="visit-card">
+        <h3>🕒 Hours</h3>
+        <p>Monday – Saturday<br>7:00 AM – 7:00 PM</p>
+      </div>
+      <div class="visit-card">
+        <h3>📱 Follow Us</h3>
+        <p>@kapekada.cebu<br>Loyalty card available at the cart</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>© 2026 KapeKada Coffee Cart. Built for the Event-Driven Programming final project using PyScript.</p>
+  <p class="footer-sub">Business Analytics feasibility study and this website are part of the same KapeKada project.</p>
+</footer>
+
+<script type="py" src="./main.py" config="./pyscript.toml"></script>
+
+</body>
+</html>
