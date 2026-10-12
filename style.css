@@ -1,9 +1,3 @@
-/* ===== KapeKada Coffee Cart — Stylesheet =====
-   Palette: brewed brown / toasted tan / warm gold / cream
-   Headings: Fraunces (serif, warm, a little editorial)
-   Body: Inter (clean, highly legible)
-*/
-
 :root {
   --brown-900: #2E1B12;
   --brown-800: #4A2C1D;
@@ -112,13 +106,28 @@ body.py-ready #loading-screen { opacity: 0; pointer-events: none; }
 .brand {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-family: 'Fraunces', serif;
+  gap: 12px;
+  color: var(--brown-800);
+  text-decoration: none;
+}
+.brand-logo {
+  display: block;
+  width: 78px;
+  height: 78px;
+  object-fit: cover;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(46, 27, 18, 0.12);
+  background: var(--cream-100);
+  border: 2px solid rgba(46, 27, 18, 0.12);
+}
+.brand-name {
+  font-family: 'Fraunces', Georgia, serif;
   font-weight: 700;
-  font-size: 1.3rem;
+  font-size: clamp(1.2rem, 2vw, 1.7rem);
+  letter-spacing: -0.04em;
   color: var(--brown-800);
 }
-.brand-mark { font-size: 1.4rem; }
 
 .nav-links {
   display: flex;
