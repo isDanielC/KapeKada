@@ -46,6 +46,9 @@ ADDON_PRICES = {
 # In-memory cart: list of dicts, each with a unique row id for removal.
 cart = []
 _next_row_id = 1
+_scroll_animation_proxy = None
+_scroll_animation_frame = None
+_scroll_original_behavior = None
 
 
 # ---------------------------------------------------------------------------
@@ -298,9 +301,59 @@ def toggle_nav(event):
     )
 
 
-def close_nav(event):
-    """Close mobile navigation after a destination is selected."""
-    document.getElementById("nav-links").classList.remove("open")
+def navigate_to_section(event):
+    """Smooth-scroll to a header destination and close the mobile menu."""
+    global _scroll_animation_proxy, _scroll_animation_frame, _scroll_original_behavior
+
+    event.preventDefault()
+    link = event.currentTarget
+    href = link.getAttribute("href")
+    target = document.getElementById(href[1:])
+
+    window.history.pushState(None, "", href)
+
+    if _scroll_animation_frame is not None:
+        window.cancelAnimationFrame(_scroll_animation_frame)
+        _scroll_animation_proxy.destroy()
+        document.documentElement.style.scrollBehavior = _scroll_original_behavior
+        _scroll_animation_proxy = None
+        _scroll_animation_frame = None
+        _scroll_original_behavior = None
+
+    start_y = window.scrollY
+    header_height = document.querySelector(".site-header").getBoundingClientRect().height
+    target_y = start_y + target.getBoundingClientRect().top - header_height
+    max_y = document.documentElement.scrollHeight - window.innerHeight
+    target_y = max(0, min(target_y, max_y))
+
+    if abs(target_y - start_y) > 1:
+        _scroll_original_behavior = document.documentElement.style.scrollBehavior
+        document.documentElement.style.scrollBehavior = "auto"
+        started_at = window.performance.now()
+        duration = 650
+
+        def animate_scroll(timestamp):
+            global _scroll_animation_proxy, _scroll_animation_frame, _scroll_original_behavior
+
+            progress = min((float(timestamp) - started_at) / duration, 1)
+            eased_progress = 1 - (1 - progress) ** 3
+            position = start_y + (target_y - start_y) * eased_progress
+            window.scrollTo(0, position)
+
+            if progress < 1:
+                _scroll_animation_frame = window.requestAnimationFrame(_scroll_animation_proxy)
+            else:
+                document.documentElement.style.scrollBehavior = _scroll_original_behavior
+                _scroll_animation_proxy.destroy()
+                _scroll_animation_proxy = None
+                _scroll_animation_frame = None
+                _scroll_original_behavior = None
+
+        _scroll_animation_proxy = create_proxy(animate_scroll)
+        _scroll_animation_frame = window.requestAnimationFrame(_scroll_animation_proxy)
+
+    nav = document.getElementById("nav-links")
+    nav.classList.remove("open")
     document.getElementById("nav-toggle").setAttribute("aria-expanded", "false")
 
 
