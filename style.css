@@ -312,8 +312,9 @@ body.py-ready #loading-screen { opacity: 0; pointer-events: none; }
 .menu-photo {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
+  height: clamp(180px, 24vw, 240px);
+  object-fit: contain;
+  object-position: center;
   border-radius: var(--radius-sm);
   margin-bottom: 16px;
   background: var(--cream-200);
