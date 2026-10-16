@@ -293,6 +293,15 @@ def toggle_nav(event):
     """click handler: open/close the mobile navigation menu."""
     nav = document.getElementById("nav-links")
     nav.classList.toggle("open")
+    document.getElementById("nav-toggle").setAttribute(
+        "aria-expanded", str(nav.classList.contains("open")).lower()
+    )
+
+
+def close_nav(event):
+    """Close mobile navigation after a destination is selected."""
+    document.getElementById("nav-links").classList.remove("open")
+    document.getElementById("nav-toggle").setAttribute("aria-expanded", "false")
 
 
 # ---------------------------------------------------------------------------
