@@ -1,0 +1,19 @@
+{
+  "name": "KapeKada Coffee Cart",
+  "short_name": "KapeKada",
+  "description": "Affordable specialty coffee and a mobile-ready ordering experience.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#FBF6EF",
+  "theme_color": "#2E1B12",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "KapeKada Coffee Badge.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

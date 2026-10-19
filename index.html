@@ -2,9 +2,17 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>KapeKada Coffee Cart</title>
-<meta name="description" content="KapeKada Coffee Cart">
+<meta name="description" content="Affordable specialty coffee and a smart mobile-friendly ordering experience for KapeKada.">
+<meta name="theme-color" content="#2E1B12">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="mobile-web-app-capable" content="yes">
+
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="KapeKada Coffee Badge.png">
+<link rel="apple-touch-icon" href="KapeKada Coffee Badge.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -60,13 +68,20 @@
       </div>
     </div>
     <div class="hero-visual" aria-hidden="true">
-      <div class="cup-illustration">
-        <div class="cup-steam s1"></div>
-        <div class="cup-steam s2"></div>
-        <div class="cup-steam s3"></div>
-        <div class="cup-body">
-          <div class="cup-sleeve"></div>
-          <div class="cup-lid"></div>
+      <div class="video-promo-holder">
+        <div class="video-promo-frame">
+          <video class="promo-video" autoplay muted loop playsinline preload="auto">
+            <source src="videos/partial_pvid.mp4" type="video/mp4">
+            <source src="videos/coffee-promo.webm" type="video/webm">
+          </video>
+          <div class="promo-overlay">
+            <span class="promo-tag">Promo video</span>
+            <div class="promo-play">▶</div>
+            <div class="promo-meta">
+              <span>KapeKada</span>
+              <strong>Street coffee, served fast.</strong>
+            </div>
+          </div>
         </div>
       </div>
     </div>
