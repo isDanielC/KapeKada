@@ -25,7 +25,7 @@
 <header class="site-header">
   <div class="header-inner">
     <a href="#home" class="brand" aria-label="KapeKada home" py-click="navigate_to_section">
-      <img src="KapeKada%20Coffee%20Badge.png" alt="KapeKada logo" class="brand-logo">
+      <img src="photos/KapeKada Coffee Logo.png" alt="KapeKada logo" class="brand-logo">
       <span class="brand-name">KapeKada</span>
     </a>
     <button id="nav-toggle" class="nav-toggle" py-click="toggle_nav" aria-label="Toggle navigation" aria-controls="nav-links" aria-expanded="false">
@@ -47,36 +47,89 @@
 
   <!-- HERO -->
   <section id="home" class="hero">
-    <video class="hero-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
-      <source src="videos/partial_pvid.mp4" type="video/mp4">
-      <source src="videos/coffee-promo.webm" type="video/webm">
-    </video>
     <div class="hero-text">
+      <p class="eyebrow">Good coffee, good company</p>
       <h1>Specialty coffee, priced for everyone on the street.</h1>
-      <p class="hero-sub">“Affordable specialty-style coffee with good taste, fast service, and a student-friendly location. KapeKada will focus on value rather than a large café setup.”</p>
+      <p class="hero-sub">Affordable specialty-style coffee, made with care and served fast. Your everyday cup, right around the corner.</p>
       <div class="hero-actions">
         <a href="#order" class="btn btn-primary" py-click="navigate_to_section">Build Your Order</a>
         <a href="#menu" class="btn btn-ghost" py-click="navigate_to_section">See the Menu</a>
       </div>
     </div>
     <div class="hero-visual" aria-hidden="true">
-      <div class="promo-placeholder" aria-label="Promotional video placeholder">
-        <div class="promo-screen">
-          <span class="promo-badge">Promo video</span>
-          <div class="promo-play">▶</div>
-          <div class="promo-copy">
+      <div class="promo-placeholder product-shot" aria-label="KapeKada coffee cart product image">
+        <div class="promo-screen product-screen">
+          <img class="product-photo" src="photos/Kape cart.png" alt="KapeKada coffee cart serving fresh coffee on the street">
+          <div class="product-badge">
+            <img src="photos/KapeKada Coffee Logo.png" alt="KapeKada logo" class="product-logo">
+          </div>
+          <div class="product-copy">
             <span>KapeKada</span>
             <strong>Street coffee, served fresh.</strong>
           </div>
         </div>
       </div>
     </div>
+    <aside class="home-updates" aria-labelledby="home-updates-title">
+      <div class="home-updates-heading">
+        <span class="updates-eyebrow">The latest</span>
+        <h2 id="home-updates-title">KapeKada Updates</h2>
+        <p>Fresh from the cart</p>
+      </div>
+      <article class="update-card">
+        <div class="update-card-top">
+          <span class="update-label">Menu announcement</span>
+          <span class="update-icon" aria-hidden="true">☕</span>
+        </div>
+        <h3>Oat milk has arrived</h3>
+        <p>Make your favorite drink your own with oat milk, available as an add-on.</p>
+        <a href="#menu" py-click="navigate_to_section">Find your new favorite <span aria-hidden="true">→</span></a>
+      </article>
+      <article class="update-card">
+        <div class="update-card-top">
+          <span class="update-label">Ordering update</span>
+          <span class="update-icon" aria-hidden="true">↗</span>
+        </div>
+        <h3>Good coffee, one order away</h3>
+        <p>Choose your drinks and add-ons, then show your order code at the cart window.</p>
+        <a href="#order" py-click="navigate_to_section">Build your order <span aria-hidden="true">→</span></a>
+      </article>
+      <article class="update-card">
+        <div class="update-card-top">
+          <span class="update-label">Location update</span>
+          <span class="update-icon" aria-hidden="true">⌖</span>
+        </div>
+        <h3>Find our coffee cart</h3>
+        <p>We’re on Leon Kilat St. in Pahina Central, Cebu City. Drop by for your everyday cup.</p>
+        <a href="#visit" py-click="navigate_to_section">See our location <span aria-hidden="true">→</span></a>
+      </article>
+    </aside>
   </section>
 
   <!-- ABOUT -->
   <section id="about" class="about">
     <h2>Why KapeKada</h2>
     <p class="section-sub">A business built on real survey data and a simple idea: good coffee shouldn't be reserved for those who can afford a sit-down café.</p>
+
+    <div class="about-spotlight">
+      <div class="promo-video-card" aria-label="Temporary promotional video placeholder">
+        <div class="promo-video-frame">
+          <video class="promo-video-media" autoplay muted loop playsinline preload="metadata" poster="photos/Kape cart.png">
+            <source src="videos/partial_pvid.mp4" type="video/mp4">
+            <source src="videos/coffee-promo.webm" type="video/webm">
+          </video>
+          <div class="promo-video-overlay">
+            <span class="promo-video-badge">Promo video</span>
+            <div class="promo-video-play">▶</div>
+            <div class="promo-video-copy">
+              <span>KapeKada</span>
+              <strong>Street coffee, served fresh.</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="feature-grid">
       <div class="feature-card">
         <span class="feature-icon">🎯</span>
@@ -101,7 +154,6 @@
     <h2>Our Menu</h2>
     <p class="section-sub">Prices shown are for a 12oz Regular. Customize size and add-ons in the order builder below.</p>
     <div class="menu-grid">
-      <!-- Replace each photo URL with your product image path, e.g. images/americano.jpg. -->
       <article class="menu-card">
         <img class="menu-photo" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Example photo of an Americano" loading="lazy" decoding="async">
         <h3>Americano</h3>
@@ -226,6 +278,28 @@
       <input type="number" id="loyalty-input" min="0" value="0">
       <button type="button" id="loyalty-btn" class="btn btn-primary" py-click="calc_loyalty">Calculate</button>
       <p id="loyalty-result" class="loyalty-result"></p>
+
+      <div id="loyalty-summary" class="loyalty-summary hidden">
+        <div class="loyalty-stats">
+          <div class="loyalty-stat">
+            <span>Free coffees</span>
+            <strong id="loyalty-free">0</strong>
+          </div>
+          <div class="loyalty-stat">
+            <span>Next reward</span>
+            <strong id="loyalty-next">9 cups</strong>
+          </div>
+        </div>
+        <div class="loyalty-progress">
+          <div class="progress-row">
+            <span>Reward progress</span>
+            <strong id="loyalty-progress-label">0%</strong>
+          </div>
+          <div class="progress-bar" aria-label="Progress to next free coffee">
+            <span id="loyalty-progress-bar"></span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -256,10 +330,10 @@
       </form>
 
       <div id="feedback-list" class="feedback-list">
-        <!-- seed feedback cards; JS/py will prepend new ones here -->
+       
         <div class="feedback-card">
           <div class="feedback-card-head">
-            <strong>Mel R.</strong>
+            <strong>Daniel C.</strong>
             <span class="stars">★★★★★</span>
           </div>
           <p>Super affordable and the Iced Spanish Latte tastes just as good as the pricier cafés!</p>
@@ -267,7 +341,7 @@
         </div>
         <div class="feedback-card">
           <div class="feedback-card-head">
-            <strong>Jonas T.</strong>
+            <strong>Justine P.</strong>
             <span class="stars">★★★★☆</span>
           </div>
           <p>Line moves fast even during rush hour. Would love an oat milk option — already added!</p>
@@ -280,6 +354,23 @@
   <!-- VISIT US -->
   <section id="visit" class="visit">
     <h2>Visit Us</h2>
+    <div class="visit-map">
+      <div class="visit-map-heading">
+        <h3>Find us on the map</h3>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Leon+Kilat+St%2C+Pahina+Central%2C+Cebu+City%2C+Philippines" target="_blank" rel="noopener noreferrer">
+          Open directions
+        </a>
+      </div>
+      <div class="visit-map-frame">
+        <iframe
+          title="Interactive map showing Leon Kilat Street in Pahina Central, Cebu City"
+          src="https://maps.google.com/maps?q=Leon%20Kilat%20St%2C%20Pahina%20Central%2C%20Cebu%20City%2C%20Philippines&amp;z=16&amp;output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
     <div class="visit-grid">
       <div class="visit-card">
         <h3>📍 Location</h3>
@@ -301,6 +392,10 @@
 <footer class="site-footer">
   <p>© 2026 KapeKada Coffee Cart.</p>
 </footer>
+
+<a id="back-to-top" href="#home" py-click="navigate_to_section" aria-label="Back to top" title="Back to top">
+  <span aria-hidden="true">☕</span>
+</a>
 
 <script type="py" src="./main.py" config="./pyscript.toml"></script>
 
