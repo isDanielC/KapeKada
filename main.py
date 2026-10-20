@@ -1,22 +1,3 @@
-"""
-KapeKada Coffee Cart — PyScript application logic.
-
-This file demonstrates Event-Driven Programming entirely in Python,
-running in the browser via PyScript/Pyodide. Covered event types:
-
-  - click        -> toggle_nav, add_to_order, place_order, calc_loyalty,
-                     and dynamically bound "Remove" buttons in the order table
-  - change       -> update_preview (drink/size/add-on selectors)
-  - input        -> update_preview (quantity field), update_char_count (textarea)
-  - submit       -> handle_feedback_submit (feedback form)
-
-Elements wire up to these handlers declaratively in index.html using
-PyScript's py-click / py-change / py-input / py-submit attributes.
-A couple of dynamically created elements (the per-row "Remove" buttons)
-are bound manually with create_proxy, which is shown here as an example
-of imperative event binding from Python via the Pyodide/JS bridge.
-"""
-
 from pyscript import document, window
 from pyodide.ffi import create_proxy
 from datetime import datetime

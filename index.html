@@ -25,7 +25,7 @@
 <header class="site-header">
   <div class="header-inner">
     <a href="#home" class="brand" aria-label="KapeKada home" py-click="navigate_to_section">
-      <img src="KapeKada%20Coffee%20Badge.png" alt="KapeKada logo" class="brand-logo">
+      <img src="photos/KapeKada Coffee Logo.png" alt="KapeKada logo" class="brand-logo">
       <span class="brand-name">KapeKada</span>
     </a>
     <button id="nav-toggle" class="nav-toggle" py-click="toggle_nav" aria-label="Toggle navigation" aria-controls="nav-links" aria-expanded="false">
@@ -56,11 +56,13 @@
       </div>
     </div>
     <div class="hero-visual" aria-hidden="true">
-      <div class="promo-placeholder" aria-label="Promotional video placeholder">
-        <div class="promo-screen">
-          <span class="promo-badge">Promo video</span>
-          <div class="promo-play">▶</div>
-          <div class="promo-copy">
+      <div class="promo-placeholder product-shot" aria-label="KapeKada coffee cart product image">
+        <div class="promo-screen product-screen">
+          <img class="product-photo" src="photos/Kape cart.png" alt="KapeKada coffee cart serving fresh coffee on the street">
+          <div class="product-badge">
+            <img src="photos/KapeKada Coffee Logo.png" alt="KapeKada logo" class="product-logo">
+          </div>
+          <div class="product-copy">
             <span>KapeKada</span>
             <strong>Street coffee, served fresh.</strong>
           </div>
@@ -73,6 +75,26 @@
   <section id="about" class="about">
     <h2>Why KapeKada</h2>
     <p class="section-sub">A business built on real survey data and a simple idea: good coffee shouldn't be reserved for those who can afford a sit-down café.</p>
+
+    <div class="about-spotlight">
+      <div class="promo-video-card" aria-label="Temporary promotional video placeholder">
+        <div class="promo-video-frame">
+          <video class="promo-video-media" autoplay muted loop playsinline preload="metadata" poster="photos/Kape cart.png">
+            <source src="videos/partial_pvid.mp4" type="video/mp4">
+            <source src="videos/coffee-promo.webm" type="video/webm">
+          </video>
+          <div class="promo-video-overlay">
+            <span class="promo-video-badge">Promo video</span>
+            <div class="promo-video-play">▶</div>
+            <div class="promo-video-copy">
+              <span>KapeKada</span>
+              <strong>Street coffee, served fresh.</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="feature-grid">
       <div class="feature-card">
         <span class="feature-icon">🎯</span>
