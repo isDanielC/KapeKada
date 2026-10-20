@@ -70,6 +70,40 @@
         </div>
       </div>
     </div>
+    <aside class="home-updates" aria-labelledby="home-updates-title">
+      <div class="home-updates-heading">
+        <span class="updates-eyebrow">The latest</span>
+        <h2 id="home-updates-title">KapeKada Updates</h2>
+        <p>Fresh from the cart</p>
+      </div>
+      <article class="update-card">
+        <div class="update-card-top">
+          <span class="update-label">Menu announcement</span>
+          <span class="update-icon" aria-hidden="true">☕</span>
+        </div>
+        <h3>Oat milk has arrived</h3>
+        <p>Make your favorite drink your own with oat milk, available as an add-on.</p>
+        <a href="#menu" py-click="navigate_to_section">Find your new favorite <span aria-hidden="true">→</span></a>
+      </article>
+      <article class="update-card">
+        <div class="update-card-top">
+          <span class="update-label">Ordering update</span>
+          <span class="update-icon" aria-hidden="true">↗</span>
+        </div>
+        <h3>Good coffee, one order away</h3>
+        <p>Choose your drinks and add-ons, then show your order code at the cart window.</p>
+        <a href="#order" py-click="navigate_to_section">Build your order <span aria-hidden="true">→</span></a>
+      </article>
+      <article class="update-card">
+        <div class="update-card-top">
+          <span class="update-label">Location update</span>
+          <span class="update-icon" aria-hidden="true">⌖</span>
+        </div>
+        <h3>Find our coffee cart</h3>
+        <p>We’re on Leon Kilat St. in Pahina Central, Cebu City. Drop by for your everyday cup.</p>
+        <a href="#visit" py-click="navigate_to_section">See our location <span aria-hidden="true">→</span></a>
+      </article>
+    </aside>
   </section>
 
   <!-- ABOUT -->
@@ -244,6 +278,28 @@
       <input type="number" id="loyalty-input" min="0" value="0">
       <button type="button" id="loyalty-btn" class="btn btn-primary" py-click="calc_loyalty">Calculate</button>
       <p id="loyalty-result" class="loyalty-result"></p>
+
+      <div id="loyalty-summary" class="loyalty-summary hidden">
+        <div class="loyalty-stats">
+          <div class="loyalty-stat">
+            <span>Free coffees</span>
+            <strong id="loyalty-free">0</strong>
+          </div>
+          <div class="loyalty-stat">
+            <span>Next reward</span>
+            <strong id="loyalty-next">9 cups</strong>
+          </div>
+        </div>
+        <div class="loyalty-progress">
+          <div class="progress-row">
+            <span>Reward progress</span>
+            <strong id="loyalty-progress-label">0%</strong>
+          </div>
+          <div class="progress-bar" aria-label="Progress to next free coffee">
+            <span id="loyalty-progress-bar"></span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -329,6 +385,10 @@
 <footer class="site-footer">
   <p>© 2026 KapeKada Coffee Cart.</p>
 </footer>
+
+<a id="back-to-top" href="#home" py-click="navigate_to_section" aria-label="Back to top" title="Back to top">
+  <span aria-hidden="true">☕</span>
+</a>
 
 <script type="py" src="./main.py" config="./pyscript.toml"></script>
 
