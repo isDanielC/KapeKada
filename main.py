@@ -197,6 +197,11 @@ def calc_loyalty(event):
     """click handler: compute free cups under the 'buy 9 get 1 free' program."""
     loyalty_input = document.getElementById("loyalty-input")
     result = document.getElementById("loyalty-result")
+    summary = document.getElementById("loyalty-summary")
+    free_counter = document.getElementById("loyalty-free")
+    next_reward = document.getElementById("loyalty-next")
+    progress_label = document.getElementById("loyalty-progress-label")
+    progress_bar = document.getElementById("loyalty-progress-bar")
 
     try:
         cups = int(loyalty_input.value or 0)
@@ -205,11 +210,18 @@ def calc_loyalty(event):
 
     if cups < 0:
         result.textContent = "Please enter a positive number of cups."
+        summary.classList.add("hidden")
         return
 
     free_cups = cups // 9
     remainder = cups % 9
-    cups_to_next_free = 0 if remainder == 0 and cups == 0 else (9 - remainder) % 9
+    cups_to_next_free = 9 if cups == 0 else (9 - remainder) % 9
+    if cups > 0 and remainder == 0:
+        cups_to_next_free = 0
+
+    progress_pct = 0 if cups == 0 else min(100, (remainder / 9) * 100)
+    if cups > 0 and remainder == 0:
+        progress_pct = 100
 
     if free_cups == 0:
         result.textContent = f"Buy {cups_to_next_free or 9} more cup(s) to earn your first free coffee!"
@@ -218,6 +230,19 @@ def calc_loyalty(event):
         if cups_to_next_free:
             msg += f" {cups_to_next_free} more cup(s) until your next one."
         result.textContent = msg
+
+    summary.classList.remove("hidden")
+    free_counter.textContent = str(free_cups)
+
+    if cups_to_next_free == 0:
+        next_reward.textContent = "Unlocked"
+        progress_label.textContent = "100%"
+    else:
+        next_reward.textContent = f"{cups_to_next_free} cups"
+        progress_label.textContent = f"{round(progress_pct)}%"
+
+    progress_bar.style.width = f"{max(8, progress_pct)}%" if cups > 0 else "0%"
+    progress_bar.style.background = "linear-gradient(90deg, #D9A441, #C08A2A)"
 
 
 # ---------------------------------------------------------------------------
