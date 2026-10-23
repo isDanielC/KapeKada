@@ -608,67 +608,13 @@ body.py-ready #loading-screen { opacity: 0; pointer-events: none; }
   position: relative;
   aspect-ratio: 16 / 9;
   overflow: hidden;
+  background: var(--brown-900);
 }
 .promo-video-media {
+  display: block;
   width: 100%;
   height: 100%;
-  display: block;
-  object-fit: cover;
-  filter: saturate(0.8) contrast(1.06) brightness(0.72);
-}
-.promo-video-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 18px 20px 20px;
-  background: linear-gradient(180deg, rgba(20, 12, 9, 0.18), rgba(20, 12, 9, 0.56));
-}
-.promo-video-badge {
-  align-self: flex-start;
-  display: inline-flex;
-  align-items: center;
-  padding: 7px 12px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.12);
-  border: 1px solid rgba(255,255,255,0.2);
-  color: var(--white);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-.promo-video-play {
-  width: 72px;
-  height: 72px;
-  display: grid;
-  place-items: center;
-  margin: auto;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.18);
-  border: 1px solid rgba(255,255,255,0.28);
-  color: var(--white);
-  font-size: 1.5rem;
-  box-shadow: 0 16px 28px rgba(0,0,0,0.18);
-}
-.promo-video-copy {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  color: var(--white);
-  max-width: 320px;
-}
-.promo-video-copy span {
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  opacity: 0.85;
-}
-.promo-video-copy strong {
-  font-size: clamp(1.2rem, 2vw, 1.8rem);
-  line-height: 1.2;
-  color: var(--white);
+  object-fit: contain;
 }
 .feature-grid {
   display: grid;
@@ -1259,7 +1205,6 @@ legend {
   .feedback-card-head { align-items: flex-start; gap: 8px; }
   .stars { white-space: nowrap; }
   .about-spotlight { margin-bottom: 24px; }
-  .promo-video-overlay { padding: 12px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
